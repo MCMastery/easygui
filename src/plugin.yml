@@ -1,0 +1,6 @@
+name: EasyGUI
+description: Easily create powerful GUIs that players can use
+version: 0.0.1
+author: MCMastery
+main: com.dgrissom.easygui.EasyGUI
+softdepend: [OSBU]
