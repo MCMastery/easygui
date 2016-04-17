@@ -6,7 +6,6 @@ import com.dgrissom.osbu.main.utilities.ArrayUtility;
 import com.dgrissom.osbu.main.utilities.InventoryUtility;
 import com.dgrissom.osbu.main.utilities.PlayerUtility;
 import com.dgrissom.osbu.main.utilities.StringUtility;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -244,7 +243,7 @@ public class EasyGUICommand extends OSBUCommand {
 
 
                         addSubCommand(new OSBUCommand("reset", "easygui.edit.commands.reset", "/easygui edit commands reset <guiname>",
-                                "sets a GUI's slot's click command") {
+                                "resets a GUI's click commands") {
                             @Override
                             public void execute(PlayerUtility sender, String[] args) {
                                 // runs the CommandSender execute
@@ -315,11 +314,10 @@ public class EasyGUICommand extends OSBUCommand {
     }
     @Override
     public void execute(CommandSender sender, String[] args) {
-        //todo OSBU command help generator
-        sender.sendMessage(new StringUtility("&cCorrect usage: &f" + getUsage()).format().toString());
+        displayHelp(sender, 0);
     }
     public void displayHelp(CommandSender sender, int page) {
-        Book help = generateHelp(sender, ChatColor.GRAY, ChatColor.WHITE, "&aEasyGUI List ({page}/{pages})");
+        Book help = generateHelp(sender, ChatColor.GRAY, ChatColor.WHITE, "&aEasyGUI List &f({page}/{pages})", true);
         if (page >= help.getPages()) {
             sender.sendMessage(new StringUtility("&cPage must be within 1 to " + help.getPages() + "!").format().toString());
             return;
